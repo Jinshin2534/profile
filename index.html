@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>我らが宙界自由連邦万歳</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Shippori+Mincho+B1:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Shippori+Mincho+B1:wght@500&display=swap" rel="stylesheet" />
 
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      writing-mode: vertical-rl;
-      font-family: 'Shippori Mincho B1', 'Orbitron', 'Yu Mincho', serif;
+      height: 100vh;
+      overflow: hidden;
       background: radial-gradient(ellipse at center, #1a0000 0%, #000000 100%);
+      font-family: 'Shippori Mincho B1', 'Orbitron', 'Yu Mincho', serif;
       color: #f8f8f8;
-      line-height: 2.2;
-      overflow-x: hidden;
-      padding-top: 100px;
     }
-    
-  .content {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
 
-.content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .scroll-container {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      height: 100vh;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      white-space: nowrap;
+    }
+
+    .content {
+      writing-mode: vertical-rl;
+      min-width: 80vw;
+      height: 100vh;
+      padding: 80px 40px;
+      box-sizing: border-box;
+      border-right: 2px solid rgba(255, 94, 58, 0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      scroll-snap-align: start;
+      display: inline-block;
+    }
+
+    .content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     h1 {
       font-size: 2.8em;
@@ -70,16 +85,6 @@
       margin-bottom: 1.2em;
     }
 
-    .section {
-      border-right: 2px solid rgba(255, 94, 58, 0.3);
-      padding-right: 1em;
-      margin-bottom: 4em;
-    }
-
-    strong {
-      color: #ffb3b3;
-    }
-
     footer {
       margin-top: 6em;
       font-size: 0.8em;
@@ -87,7 +92,7 @@
       text-align: center;
       writing-mode: horizontal-tb;
     }
-    
+
     body::before {
       content: '';
       position: fixed;
@@ -99,81 +104,125 @@
       pointer-events: none;
     }
 
-    @keyframes floatLight {
-      0%   { transform: translateY(-10px) scale(1); opacity: 0.4; }
-      100% { transform: translateY(10px) scale(1.05); opacity: 0.6; }
-    }
+    .star-divider {
+  width: 30px;
+  height: 30px;
+  margin: 2.5em auto;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+  filter: blur(0.5px);
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.4; transform: scale(1); }
+  50%  { opacity: 0.8; transform: scale(1.2); }
+  100% { opacity: 0.4; transform: scale(1); }
+}
+.goal-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.goal-image img {
+  max-height: 80vh; 
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+  transition: transform 0.8s ease;
+}
+
+.goal-image img:hover {
+  transform: scale(1.03);
+}
+
   </style>
 </head>
 
 <body>
-  <div class="content">
+  <div class="scroll-container">
 
-    <h1>ティア・ソレン・ミナ！</h1>
-    <p>ここではたくさんの人間に見てもらうために地球の言葉で書いてるよ</p>
-
-    <div class="profile">
-      <p><strong>名前 </strong>フィオ・レイン＝アーク</p>
-      <p><strong>所属 </strong>宙界自由連邦・第六光環《アストラ・ノヴァ市民大学》共感知覚専攻</p>
-      <p><strong>年齢 </strong>地球年齢でおよそ19歳（意識の覚醒は480回目）</p>
-      <p><strong>出身 </strong>浮遊庭園都市「ハルマリス」、透明な木でできた自律建築《カーム・ネスト》に居住</p>
-      <p><strong>言語 </strong>春歓語</p>
-      <p><strong>身体構成　</strong>光粒子と共振する有機結晶構造。肌は半透明で、心が澄むと淡く光る</p>
+    <div class="content">
+      <h1>ティア・ソレン・ミナ！</h1>
+      <p>ここではたくさんの人間に見てもらうために地球の言葉で書いてるよ</p>
+      <div class="profile">
+        <p><strong>名前　</strong>フィオ・レイン＝アーク</p>
+        <p><strong>所属　</strong>宙界自由連邦・第六光環《アストラ・ノヴァ市民大学》共感知覚専攻</p>
+        <p><strong>年齢　</strong>地球年齢でおよそ19歳（意識の覚醒は480回目）</p>
+        <p><strong>出身　</strong>浮遊庭園都市「ハルマリス」、透明な木でできた自律建築《カーム・ネスト》に居住</p>
+        <p><strong>言語　</strong>春歓語</p>
+        <p><strong>身体構成　</strong>光粒子と共振する有機結晶構造。肌は半透明で、心が澄むと淡く光る</p>
+      </div>
     </div>
 
-    <div class="section">
+    <div class="content">
       <h2>フィオ語録</h2>
-      <p>「争いのない世界って、努力の果てにあるって思ってた。<br>
+      <p style="margin-bottom: 1000px;">「争いのない世界って、努力の果てにあるって思ってた。<br>
           でも、本当に大切だったのは、“感じ合う”ことだったのかもしれないね。」</p>
-      <p>「静けさって、音がないことじゃないんだよ。<br>
+          <div class="star-divider"></div>
+      <p style="margin-bottom: 1000px;">「静けさって、音がないことじゃないんだよ。<br>
           心が騒がないこと、って言ったほうが近いかも。」</p>
-      <p>「言葉って、心が“着替える”ための服だよ。<br>
+          <div class="star-divider"></div>
+      <p style="margin-bottom: 1000px;">「言葉って、心が“着替える”ための服だよ。<br>
           でも時々、裸のままが一番伝わることもある。」</p>
-      <p>「ナアル・エィル・サリア」</p>
+          <div class="star-divider"></div>
+      <p style="margin-bottom: 1000px;">「あなたの“わからない”って言葉、すごく好き。<br>それは、まだ心に余白があるって証だから。<br>
+        余白って、優しさが座れるスペースだよ。」</p>
+        <div class="star-divider"></div>
+      <p style="margin-bottom: 1000px;">「ナアル・エィル・サリア」</p>
+      <div class="star-divider"></div>
+      <p style="margin-bottom: 1000px;">「“さよなら”って言わなきゃいけないとき、<br>声じゃなくて光で伝えるようにしてるの。だって光は、一度届いたら消えないから。」</p>
+      <div class="star-divider"></div>
     </div>
 
-    <div class="section">
+    <div class="content">
       <h2>好きなこと</h2>
       <ul>
         <li>沈黙を味わうこと</li>
-        <p>自分の中と世界の境界を感じながら、誰とも話さず、音さえない時間の中に心を置く。その静けさのなかで、風の振動や他人の感情が、音のない共鳴として「聴こえてくる」。</p>
-        <p>フィオ曰く 「沈黙って、言葉より深く話しかけてくるんだよ」</p>
+        <p>自分の中と世界の境界を感じながら、誰とも話さず、音さえない時間の中に心を置く。</p>
         <li>流れ星の中で詩をつくる</li>
-        <p>フィオたちの世界では、宇宙空間を渡る流星は実は古代の意識が旅をしているものとされている。彼女／彼／その子は、夜に流星の軌跡を見ながら、そのひとつひとつに小さな詩を贈っている。</p>
+        <p>流星は古代の意識が旅をしているものとされる。</p>
         <li>記憶の庭</li>
-        <p>透明な球体に自分や他者の記憶の断片を浮かべて、そこに植物の種（意識の象徴）を植える。育った記憶の花は、色や形、香りにより「その記憶がもつ意味」を映し出す。みんなで記憶の庭を歩き、他人の思い出を感じるのがこの遊び。</p>
+        <p>透明な球体に記憶を浮かべ、そこに意識の種を植える。</p>
       </ul>
     </div>
 
-    <div class="section">
-      <h2>今後の目標</h2>
-      <p><strong>地球の感情を記録する</strong></p>
-      <p>「感情は不安定で、でもそれゆえに美しい。まるで風に揺れる灯りのよう。」</p>
-    </div>
-
-    <footer>
-      宙界自由連邦情報通信用識別番号：#AST-NV-ΦIO  
-    </footer>
+    <div class="content goal-section">
+        <div class="goal-text">
+          <h2>今後の目標</h2>
+          <p><strong>地球の感情を記録する</strong></p>
+          <p>「感情は不安定で、でもそれゆえに美しい。まるで風に揺れる灯りのよう。」</p>
+        </div>
+      
+        <div class="goal-image">
+         <a href="future_world.html">
+          <img src="world.png" />
+         </a>
+        </div>
+      </div>
+      
 
   </div>
- <script>
-  const contents = document.querySelectorAll('.content');
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  <script>
+    const contents = document.querySelectorAll('.content');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      root: document.querySelector('.scroll-container'),
+      threshold: 0.5
     });
-  }, {
-    root: document.querySelector('.scroll-container'),
-    threshold: 0.5
-  });
 
-  contents.forEach(section => {
-    observer.observe(section);
-  });
-</script>
-
+    contents.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
