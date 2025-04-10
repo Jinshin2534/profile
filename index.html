@@ -20,11 +20,17 @@
       overflow-x: hidden;
       padding-top: 100px;
     }
+    
+  .content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
 
-    .content {
-      padding: 0 60px;
-      max-width: 90vw;
-    }
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
     h1 {
       font-size: 2.8em;
@@ -81,8 +87,7 @@
       text-align: center;
       writing-mode: horizontal-tb;
     }
-
-    /* ゆらぎアニメーション */
+    
     body::before {
       content: '';
       position: fixed;
@@ -108,12 +113,12 @@
     <p>ここではたくさんの人間に見てもらうために地球の言葉で書いてるよ</p>
 
     <div class="profile">
-      <p><strong>名前：</strong>フィオ・レイン＝アーク</p>
-      <p><strong>所属：</strong>宙界自由連邦・第六光環《アストラ・ノヴァ市民大学》共感知覚専攻</p>
-      <p><strong>年齢：</strong>地球年齢でおよそ19歳（意識の覚醒は480回目）</p>
-      <p><strong>出身：</strong>浮遊庭園都市「ハルマリス」、透明な木でできた自律建築《カーム・ネスト》に居住</p>
-      <p><strong>言語：</strong>春歓語</p>
-      <p><strong>身体構成：</strong>光粒子と共振する有機結晶構造。肌は半透明で、心が澄むと淡く光る</p>
+      <p><strong>名前 </strong>フィオ・レイン＝アーク</p>
+      <p><strong>所属 </strong>宙界自由連邦・第六光環《アストラ・ノヴァ市民大学》共感知覚専攻</p>
+      <p><strong>年齢 </strong>地球年齢でおよそ19歳（意識の覚醒は480回目）</p>
+      <p><strong>出身 </strong>浮遊庭園都市「ハルマリス」、透明な木でできた自律建築《カーム・ネスト》に居住</p>
+      <p><strong>言語 </strong>春歓語</p>
+      <p><strong>身体構成　</strong>光粒子と共振する有機結晶構造。肌は半透明で、心が澄むと淡く光る</p>
     </div>
 
     <div class="section">
@@ -147,5 +152,24 @@
     </footer>
 
   </div>
+ <script>
+  const contents = document.querySelectorAll('.content');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    root: document.querySelector('.scroll-container'),
+    threshold: 0.5
+  });
+
+  contents.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
 </body>
 </html>
