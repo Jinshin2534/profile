@@ -9,35 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Shippori+Mincho+B1:wght@500&display=swap" rel="stylesheet">
 
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: radial-gradient(ellipse at center, #1a0000 0%, #000000 100%);
+      writing-mode: vertical-rl;
       font-family: 'Shippori Mincho B1', 'Orbitron', 'Yu Mincho', serif;
+      background: radial-gradient(ellipse at center, #1a0000 0%, #000000 100%);
       color: #f8f8f8;
-      overflow: hidden;
-    }
-
-    .scroll-container {
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      overflow-y: hidden;
-      height: 100vh;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      white-space: nowrap;
+      line-height: 2.2;
+      overflow-x: hidden;
+      padding-top: 100px;
     }
 
     .content {
-      writing-mode: vertical-rl;
-      padding: 80px 60px;
-      min-width: 80vw;
-      height: 100%;
-      scroll-snap-align: start;
-      box-sizing: border-box;
-      border-right: 2px solid rgba(255, 94, 58, 0.2);
+      padding: 0 60px;
+      max-width: 90vw;
     }
 
     h1 {
@@ -78,15 +64,25 @@
       margin-bottom: 1.2em;
     }
 
-    footer {
-      margin-top: 4em;
-      font-size: 0.8em;
-      color: #aaa;
-      writing-mode: horizontal-tb;
-      text-align: center;
+    .section {
+      border-right: 2px solid rgba(255, 94, 58, 0.3);
+      padding-right: 1em;
+      margin-bottom: 4em;
     }
 
-    /* ゆらぎアニメーション（任意） */
+    strong {
+      color: #ffb3b3;
+    }
+
+    footer {
+      margin-top: 6em;
+      font-size: 0.8em;
+      color: #aaa;
+      text-align: center;
+      writing-mode: horizontal-tb;
+    }
+
+    /* ゆらぎアニメーション */
     body::before {
       content: '';
       position: fixed;
@@ -104,25 +100,23 @@
     }
   </style>
 </head>
+
 <body>
+  <div class="content">
 
-  <div class="scroll-container">
+    <h1>ティア・ソレン・ミナ！</h1>
+    <p>ここではたくさんの人間に見てもらうために地球の言葉で書いてるよ</p>
 
-    <div class="content">
-      <h1>ティア・ソレン・ミナ！</h1>
-      <p>ここではたくさんの人間に見てもらうために地球の言葉で書いてるよ</p>
-
-      <div class="profile">
-        <p><strong>名前：</strong>フィオ・レイン＝アーク</p>
-        <p><strong>所属：</strong>宙界自由連邦・第六光環《アストラ・ノヴァ市民大学》共感知覚専攻</p>
-        <p><strong>年齢：</strong>地球年齢でおよそ19歳（意識の覚醒は480回目）</p>
-        <p><strong>出身：</strong>浮遊庭園都市「ハルマリス」、透明な木でできた自律建築《カーム・ネスト》に居住</p>
-        <p><strong>言語：</strong>春歓語</p>
-        <p><strong>身体構成：</strong>光粒子と共振する有機結晶構造。肌は半透明で、心が澄むと淡く光る</p>
-      </div>
+    <div class="profile">
+      <p><strong>名前：</strong>フィオ・レイン＝アーク</p>
+      <p><strong>所属：</strong>宙界自由連邦・第六光環《アストラ・ノヴァ市民大学》共感知覚専攻</p>
+      <p><strong>年齢：</strong>地球年齢でおよそ19歳（意識の覚醒は480回目）</p>
+      <p><strong>出身：</strong>浮遊庭園都市「ハルマリス」、透明な木でできた自律建築《カーム・ネスト》に居住</p>
+      <p><strong>言語：</strong>春歓語</p>
+      <p><strong>身体構成：</strong>光粒子と共振する有機結晶構造。肌は半透明で、心が澄むと淡く光る</p>
     </div>
 
-    <div class="content">
+    <div class="section">
       <h2>フィオ語録</h2>
       <p>「争いのない世界って、努力の果てにあるって思ってた。<br>
           でも、本当に大切だったのは、“感じ合う”ことだったのかもしれないね。」</p>
@@ -133,24 +127,25 @@
       <p>「ナアル・エィル・サリア」</p>
     </div>
 
-    <div class="content">
+    <div class="section">
       <h2>好きなこと</h2>
       <ul>
         <li>沈黙を味わうこと</li>
         <li>流れ星の中で詩をつくる</li>
         <li>記憶の庭</li>
       </ul>
+    </div>
 
+    <div class="section">
       <h2>今後の目標</h2>
       <strong>地球の感情を記録する</strong>
       <p>「感情は不安定で、でもそれゆえに美しい。まるで風に揺れる灯りのよう。」</p>
-
-      <footer>
-        宙界自由連邦情報通信用識別番号：#AST-NV-ΦIO  
-      </footer>
     </div>
 
-  </div>
+    <footer>
+      宙界自由連邦情報通信用識別番号：#AST-NV-ΦIO  
+    </footer>
 
+  </div>
 </body>
 </html>
